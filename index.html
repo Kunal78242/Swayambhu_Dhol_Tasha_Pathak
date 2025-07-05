@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>स्वयंभू ढोल ताशा पथक, नाशिक </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Baloo+Bhaijaan+2&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    body {
+      scroll-behavior: smooth;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      color: #333;
+      font-family: 'Baloo Bhaijaan 2', sans-serif;
+      padding-top: 56px; /* For fixed navbar */
+    }
+    .navbar {
+      background: linear-gradient(90deg, #1a2980, #26d0ce);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .nav-link, .navbar-brand {
+      color: #ffffff !important;
+      font-size: 1.1rem;
+    }
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+    .section {
+      padding: 80px 0;
+      min-height: 100vh;
+    }
+    .section.bg-light {
+      background: rgba(148, 148, 148, 0.8);
+    }
+    h1, h2, h3 {
+      color: #000000;
+      font-weight: bold;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 4px;
+      background: linear-gradient(90deg, #1a2980, #26d0ce);
+      bottom: -10px;
+      left: 0;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    .lead {
+      font-size: 1.3rem;
+      color: #1a2980;
+    }
+    .img-fluid {
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      margin-bottom: 20px;
+    }
+    .img-fluid:hover {
+      transform: scale(1.03);
+    }
+    .form-control {
+      border-radius: 8px;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      background-color: #f8f9fa;
+    }
+    .form-control:focus {
+      border-color: #1a2980;
+      box-shadow: 0 0 0 0.2rem rgba(26, 41, 128, 0.25);
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #1a2980, #26d0ce);
+      border: none;
+      padding: 10px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    footer {
+      background: linear-gradient(90deg, #2100c5, #26d0ce);
+      color: rgb(255, 255, 255);
+      padding: 30px 0;
+      text-align: center;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    footer a:hover {
+      color: #f8f9fa;
+      text-decoration: underline;
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Scroll to Top Button */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      background: linear-gradient(90deg, #1a2980, #26d0ce);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 9999;
+      transition: all 0.3s ease;
+    }
+    #scrollTopBtn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    
+    /* Video Container Styles - Changed to 9:16 portrait format */
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 300px; /* Limit width for portrait videos */
+      margin: 0 auto;
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      aspect-ratio: 9/16;
+    }
+    
+    .video-container:hover {
+      transform: scale(1.02);
+    }
+    
+    .video-thumbnail {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background-color: rgba(26, 41, 128, 0.8);
+      border-radius: 50%;
+      color: white;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+    }
+    
+    .video-container:hover .play-button {
+      background-color: rgba(38, 208, 206, 0.9);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    
+    .video-container.playing .play-button {
+      display: none;
+    }
+
+    /* Button Grow Effect with Shadow */
+    .hover-grow {
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      transform: translateZ(0); /* Hardware acceleration */
+      backface-visibility: hidden; /* Fixes flickering in some browsers */
+    }
+
+    .hover-grow:hover {
+      transform: scale(1.05) translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Pulse Animation */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .animate-pulse {
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    /* Form Highlight Animation */
+    .highlight-form {
+      position: relative;
+      z-index: 1;
+      animation: highlight 2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes highlight {
+      0% { box-shadow: 0 0 0 0 rgba(26, 41, 128, 0); }
+      50% { box-shadow: 0 0 0 20px rgba(26, 41, 128, 0.1); }
+      100% { box-shadow: 0 0 0 0 rgba(26, 41, 128, 0); }
+    }
+
+    /* Enhanced Google Form Container */
+    .google-form-container {
+      position: relative;
+      min-height: 600px;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .google-form-container:hover {
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .google-form-container iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 600px;
+      border: none;
+      background: transparent;
+    }
+    
+    /* Loading Spinner Styles */
+    .form-loading-spinner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.8);
+      z-index: 10;
+    }
+
+    /* Button active state */
+    .btn-primary.active-state {
+      transform: scale(0.95);
+      filter: brightness(0.95);
+    }
+
+    /* Smooth transitions for all interactive elements */
+    button, a, input {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .section {
+        padding: 60px 0;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+      }
+      .google-form-container {
+        min-height: 800px; /* More height for mobile */
+      }
+      .video-container {
+        max-width: 100%; /* Full width on mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Updated Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#home">स्वयंभू ढोल ताशा पथक</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">मुखपृष्ठ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">आमच्याविषयी</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#gallery">गॅलरी</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#videos">व्हिडीओ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#blog">ब्लॉग</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#register">नोंदणी</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">संपर्क</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Home Section -->
+<section id="home" class="section text-center d-flex align-items-center">
+  <div class="container fade-in">
+    <h1 class="animate__animated animate__fadeInDown">स्वागत आहे स्वयंभू ढोल ताशा पथकात</h1>
+    <p class="lead animate__animated animate__fadeInUp">महाराष्ट्राच्या पारंपरिक तालाचे संवर्धन आणि प्रसार</p>
+    <a href="#register" class="btn btn-primary btn-lg mt-4 animate__animated animate__fadeInUp animate__delay-1s hover-grow" id="joinButton">
+      सामील व्हा
+    </a>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section bg-light">
+  <div class="container fade-in">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h2>आमच्याविषयी</h2>
+        <p>स्वयंभू ढोल ताशा पथक हे नाशिक मधिल एक प्रसिद्ध पारंपरिक वाद्य मंडळ आहे. आम्ही २०१७ पासून महाराष्ट्राच्या सांस्कृतिक वारशाचे संवर्धन करत आहोत.</p>
+        <p>आमच्या मंडळामध्ये ५० हून अधिक सदस्य आहेत जे विविध उत्सव, कार्यक्रम आणि सामाजिक कार्यांसाठी सादरीकरण करतात. आमचे मुख्य उद्दिष्ट तरुण पिढीला या कलेचे प्रशिक्षण देणे आणि पारंपरिक संगीताचा प्रसार करणे हे आहे.</p>
+      </div>
+      <div class="col-lg-6">
+        <img src="swlogo.jpg" alt="ढोल ताशा पथक" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery" class="section">
+  <div class="container fade-in">
+    <h2 class="text-center mb-5">गॅलरी</h2>
+    <div class="row justify-content-center">
+      <!-- Photo 1 -->
+      <div class="col-md-4 mb-4 d-flex flex-column align-items-center">
+        <img src="cidco cha raja agman photo.jpg" class="img-fluid rounded shadow" alt="गणेशोत्सव मिरवणूक" style="max-height: 300px; width: auto; object-fit: cover;">
+        <h4 class="text-center mt-3">गणेशोत्सव मिरवणूक</h4>
+      </div>
+      <!-- Photo 2 -->
+      <div class="col-md-4 mb-4 d-flex flex-column align-items-center">
+        <img src="vipul dada.jpg" class="img-fluid rounded shadow" alt="शिवजन्मोत्सव मिरवणूक" style="max-height: 300px; width: auto; object-fit: cover;">
+        <h4 class="text-center mt-3">शिवजन्मोत्सव मिरवणूक</h4>
+      </div>
+      <!-- Photo 3 -->
+      <div class="col-md-4 mb-4 d-flex flex-column align-items-center">
+        <img src="wadan spardha jpeg.jpg" class="img-fluid rounded shadow" alt="सेलीब्रिटी गॅलरी" style="max-height: 300px; width: auto; object-fit: cover;">
+        <h4 class="text-center mt-3">सेलीब्रिटी गॅलरी</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Videos -->
+<section id="videos" class="section bg-light">
+  <div class="container fade-in">
+    <h2 class="text-center">व्हिडीओ</h2>
+    <div class="row">
+      <!-- Video 1 -->
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="video-container" onclick="playVideo(this)">
+          <video class="video-thumbnail" loop preload="none" poster="swlogo.jpg">
+            <source src="sarav suruwat.mp4" type="video/mp4">
+          </video>
+          <div class="play-button">▶</div>
+        </div>
+        <h6 class="text-center mt-2">सराव शुभारंभ व वाद्यपूजन</h6>
+      </div>
+      <!-- Video 2 -->
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="video-container" onclick="playVideo(this)">
+          <video class="video-thumbnail" loop preload="none" poster="swlogo.jpg">
+            <source src="ashokstambh agman.mp4" type="video/mp4">
+          </video>
+          <div class="play-button">▶</div>
+        </div>
+        <h6 class="text-center mt-2">अशोकस्तंभाचा राजा आगमन सोहळा</h6>
+      </div>
+      <!-- Video 3 -->
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="video-container" onclick="playVideo(this)">
+          <video class="video-thumbnail" loop preload="none" poster="swlogo.jpg">
+            <source src="sarav.mp4" type="video/mp4">
+          </video>
+          <div class="play-button">▶</div>
+        </div>
+        <h6 class="text-center mt-2">सराव</h6>
+      </div>
+      <!-- Video 4 -->
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="video-container" onclick="playVideo(this)">
+          <video class="video-thumbnail" loop preload="none" poster="swlogo.jpg">
+            <source src="wadan spardha 2024.mp4" type="video/mp4">
+          </video>
+          <div class="play-button">▶</div>
+        </div>
+        <h6 class="text-center mt-2">वादन मोहोत्सव २०२४</h6>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Blog Items -->
+<section id="blog" class="section">
+  <div class="container fade-in">
+    <h2 class="text-center">ब्लॉग व माहिती</h2>
+    <div class="row">
+      <!-- Blog Item 1 -->
+      <div class="col-md-6 col-lg-3 mb-4 blog-item">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h3 class="card-title">पारंपरिक पोशाख</h3>
+            <div class="card-text">
+              <p>ढोल ताशा पथकाच्या पारंपरिक पोशाखामध्ये केसरी धोतर, बंडी, रुमाल आणि फेटा यांचा समावेश होतो.</p>
+              <p>हा पोशाख महाराष्ट्राच्या शौर्य परंपरेचे प्रतीक आहे. पोशाखाच्या प्रत्येक घटकाचे विशेष महत्त्व असून ते संपूर्ण एकसमान दिसावे यासाठी विशेष काळजी घेतली जाते.</p>
+              <p>धोतराचा रंग केसरी असून तो शौर्याचे प्रतीक आहे. बंडीवर पथकाचे नाव व निसर्गाचे चित्रण केलेले असते.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Blog Item 2 -->
+      <div class="col-md-6 col-lg-3 mb-4 blog-item">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h3 class="card-title">ढोल व ताशा वाद्ये</h3>
+            <div class="card-text">
+              <p>ढोल हे दोन्ही बाजूंनी ताणलेले तबला प्रकारचे वाद्य आहे ज्याचा आवाज खोल आणि प्रभावी असतो.</p>
+              <p>ताशा हे पातळ कातडीचे वाद्य असून याचा आवाज तीक्ष्ण असतो. दोन्ही वाद्ये एकत्र वाजवल्यावर जोरदार आवाज निर्माण होतो जो दूरवर ऐकू येतो.</p>
+              <p>ढोलाची लांबी सुमारे 2 फूट असते तर ताशा आकाराने लहान असतो. दोन्ही वाद्यांना विशेष प्रकारच्या काठ्या वापरल्या जातात.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Blog Item 3 -->
+      <div class="col-md-6 col-lg-3 mb-4 blog-item">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h3 class="card-title">सराव वेळापत्रक</h3>
+            <div class="card-text">
+              <p>आमचा नियमित सराव दर शनिवार व रविवार संध्याकाळी ७ ते ९ वाजेपर्यंत श्रीमती सुनंदा केले विद्यालय येथे चालतो.</p>
+              <p>नवीन सदस्यांसाठी मार्गदर्शन व वैयक्तिक प्रशिक्षणाची सोय उपलब्ध आहे. सरावाच्या वेळी मूलभूत तालांपासून ते संपूर्ण मिरवणुकीच्या क्रमवारीपर्यंत सर्व प्रकारचे प्रशिक्षण दिले जाते.</p>
+              <p>विशेष कार्यक्रमाच्या आधी सरावाचे तास वाढवले जातात. सर्व सदस्यांनी वेळेवर हजर राहणे अनिवार्य आहे.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Blog Item 4 -->
+      <div class="col-md-6 col-lg-3 mb-4 blog-item">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h3 class="card-title">आचारसंहिता</h3>
+            <div class="card-text">
+              <p>पथक सदस्यांनी वेळच्या वेळी सरावासाठी हजर राहावे, वाद्यांची काळजी घ्यावी, इतर सदस्यांशी सहकार्य करावे.</p>
+              <p>सर्व सदस्यांनी एकमेकांचा आदर करावा आणि पथकाच्या प्रतिमेचे रक्षण करावे. प्रत्येक कार्यक्रमास मोठ्या प्रमाणात सज्जता आणि अनुशासन आवश्यक आहे.</p>
+              <p>वाद्ये हाताळताना विशेष काळजी घ्यावी. कोणत्याही प्रकारचा अव्यवस्था किंवा गैरवर्तन चालणार नाही.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    
+    
+<!-- Registration Form -->
+<section id="register" class="section py-5 bg-light" aria-labelledby="registerHeading">
+  <div class="container fade-in">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-8">
+        <!-- Section Heading -->
+        <h2 id="registerHeading" class="text-center mb-4 animate__animated animate__fadeIn">
+          <span class="d-block">सदस्य नोंदणी</span>
+        </h2>
+        
+        <!-- Form Container with Loading State -->
+        <div class="google-form-container animate__animated animate__fadeIn animate__delay-1s position-relative">
+          <!-- Loading Spinner -->
+          <div class="form-loading-spinner">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">लोड होत आहे...</span>
+            </div>
+          </div>
+          
+          <!-- Google Form Iframe -->
+          <iframe 
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdnLVWOV5kMv8QXiw37HVkvWUuFrZpgbIOSVC9-TYmCZETIJg/viewform?embedded=true" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0"
+            title="सदस्य नोंदणी फॉर्म"
+            loading="lazy"
+            onload="this.parentNode.querySelector('.form-loading-spinner').style.display='none'"
+            class="rounded shadow-sm">
+            लोड होत आहे...
+          </iframe>
+        </div>
+        
+        <!-- Alternative Help Text -->
+        <p class="text-center mt-3 small text-muted animate__animated animate__fadeIn animate__delay-2s">
+          फॉर्म लोड होत नसल्यास, <a href="https://docs.google.com/forms/d/e/1FAIpQLSdnLVWOV5kMv8QXiw37HVkvWUuFrZpgbIOSVC9-TYmCZETIJg/viewform" target="_blank" rel="noopener">या लिंकवर क्लिक करा</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section">
+  <div class="container fade-in">
+    <div class="row">
+      <div class="col-lg-6">
+        <h2>संपर्क करा</h2>
+        <p><strong>पत्ता:</strong> स्वयंभू ढोल ताशा पथक, नाशिक - ४२२००७ , महाराष्ट्र</p>
+        <p><strong>फोन:</strong> <a href="tel:+919876543210">+९१ ८१४९५५६७०३ </a></p>
+        <p><strong>ईमेल:</strong> <a href="mailto:contact@swayambhudhol.com">contact@swayambhudhol.com</a></p>
+        <p><strong>सराव वेळ:</strong> दर सोमवार ते रविवार संध्याकाळी ६ पासून रात्री ९ वाजेपर्यंत </p>
+        <p><strong>सराव ठिकाण:</strong> श्रीमती सुनंदा केले विद्यालय, आय टी आय पुलाजवळ, पी एफ ऑफिस समोर, अंबड -४२२००७, महाराष्ट्र </p>
+      </div>
+      <div class="col-lg-6">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.011347381862!2d73.7467808!3d19.9892561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb7da25da9d5%3A0xf41d36c0f6fe2b18!2sSunanda%20Kele%20Vidhyamandir%20.%20Special%20education%20school!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
+width="100%" 
+height="300" 
+style="border:0;" 
+allowfullscreen="" 
+loading="lazy" 
+class="rounded shadow"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Scroll to Top Button -->
+<button onclick="scrollToTop()" id="scrollTopBtn" title="वर जा">↑</button>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4 mb-md-0">
+        <h3>स्वयंभू ढोल ताशा पथक</h3>
+        <p>महाराष्ट्राच्या पारंपरिक तालाचे संवर्धन आणि प्रसार</p>
+      </div>
+      <div class="col-md-4 mb-4 mb-md-0">
+        <h3>द्रुत लिंक</h3>
+        <ul class="list-unstyled">
+          <li><a href="#home">मुखपृष्ठ</a></li>
+          <li><a href="#about">आमच्याविषयी</a></li>
+          <li><a href="#register">नोंदणी</a></li>
+          <li><a href="#contact">संपर्क</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h3>सोशल मीडिया</h3>
+        <p>
+          <a href="https://www.facebook.com/share/1B1N4nmG4i/?mibextid=qi2Omg" target="_blank" class="mr-3">Facebook</a>
+          <a href="https://www.instagram.com/swayambhu_dholtasha_pathak?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="mr-3">Instagram</a>
+          <a href="https://www.youtube.com/@%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A4%AF%E0%A4%82%E0%A4%AD%E0%A5%81%E0%A4%A2%E0%A5%8B%E0%A4%B2%E0%A4%A4%E0%A4%BE%E0%A4%B6%E0%A4%BE%E0%A4%AA%E0%A4%A5%E0%A4%95" target="_blank">YouTube</a>
+        </p>
+      </div>
+    </div>
+    <hr class="my-4 bg-light">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p>&copy; २०२३ स्वयंभू ढोल ताशा पथक. सर्व हक्क राखीव.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+<script>
+  // Improved smooth scrolling for navigation links
+  $(document).ready(function(){
+    $('a[href*="#"]').on('click', function(e) {
+      e.preventDefault();
+      
+      // Close mobile menu when clicking a link
+      $('.navbar-collapse').collapse('hide');
+      
+      // Get target element
+      var target = $(this.hash);
+      if (target.length) {
+        // Calculate scroll position
+        var scrollTo = target.offset().top - 70;
+        
+        // Animate scroll
+        $('html, body').animate({
+          scrollTop: scrollTo
+        }, 800, 'swing');
+      }
+    });
+  });
+
+  // Scroll to top button
+  const scrollBtn = document.getElementById("scrollTopBtn");
+
+  window.onscroll = function() {
+    scrollBtn.style.display = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) ? "block" : "none";
+  };
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Video play functionality
+  function playVideo(container) {
+    const video = container.querySelector('video');
+    const isPlaying = !video.paused;
+    
+    // Pause all other videos first
+    document.querySelectorAll('video').forEach(v => {
+      if (v !== video) {
+        v.pause();
+        v.parentElement.classList.remove('playing');
+      }
+    });
+    
+    if (isPlaying) {
+      video.pause();
+      container.classList.remove('playing');
+    } else {
+      video.play();
+      container.classList.add('playing');
+    }
+  }
+  
+  // Pause video when it ends
+  document.querySelectorAll('video').forEach(video => {
+    video.addEventListener('ended', function() {
+      this.parentElement.classList.remove('playing');
+    });
+  });
+
+  // Add animation to sections when they come into view
+  $(document).ready(function() {
+    $(window).scroll(function() {
+      $('.fade-in').each(function() {
+        var position = $(this).offset().top;
+        var scroll = $(window).scrollTop();
+        var windowHeight = $(window).height();
+        
+        if (scroll + windowHeight > position) {
+          $(this).addClass('animate__animated animate__fadeInUp');
+        }
+      });
+    });
+  });
+
+  // Enhanced join button animation
+  $('#joinButton').on('click', function(e) {
+    e.preventDefault();
+    const $button = $(this);
+    const $register = $('#register');
+    
+    // Disable button temporarily to prevent multiple clicks
+    $button.prop('disabled', true);
+    
+    // Add pulse and active state
+    $button.addClass('animate-pulse active-state');
+    
+    // Smooth scroll to registration form
+    $('html, body').animate({
+      scrollTop: $register.offset().top - 70
+    }, {
+      duration: 1000,
+      easing: 'swing',
+      complete: function() {
+        // Remove animations
+        $button.removeClass('animate-pulse active-state');
+        $button.prop('disabled', false);
+        
+        // Highlight form with animation
+        $register.addClass('highlight-form');
+        
+        // Focus on first input field
+        $register.find('input:visible:first').focus();
+        
+        // Remove highlight after animation
+        setTimeout(function() {
+          $register.removeClass('highlight-form');
+        }, 2000);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
+
